@@ -1,0 +1,59 @@
+
+<%= form_for role, :html => { :onsubmit => "foo()" } do |form| %>
+  <% if role.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(role.errors.count, "error") %> prohibited this role from being saved:</h2>
+
+      <ul>
+        <% role.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+
+    <%= form.text_field :name %>
+  </div>
+
+    <div>
+    <%= form.label :status %><br>
+    <% ['active', 'inactive'].each do |sta| %>
+    <%= form.radio_button(:status, sta) %><%= form.label sta %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :qualifications %><br>
+    <%= form.select :qualifications, [["ssc", "ssc"],
+    ["intermediate", "Intermediate"], ["B.Sc", "B.Sc"],
+      ["B.Com","B.Com"],["B,Tech/B.E","B.Tech/B.E"], ["P.G", "P.G"]] %>
+  </div>
+
+  <div>
+    <%= form.label :gender %><br>
+    <% ['male', 'female', 'other'].each do |ele| %>
+    <%= form.radio_button(:gender, ele) %><%= form.label ele %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+function foo(){
+  var x = document.getElementById("role_name").value;
+  if (x == "") {
+    alert("please fill the first_name");
+    return false;
+  }
+}
+</script>
