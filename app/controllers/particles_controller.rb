@@ -7,6 +7,7 @@ class ParticlesController < ApplicationController
 
   def show
     @particle = Particle.find(params[:id])
+
   end
 
   def new
