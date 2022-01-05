@@ -2,7 +2,6 @@ class ParticlesController < ApplicationController
 
   def index
     @particles =  Particle.all
-
   end
 
   def show
